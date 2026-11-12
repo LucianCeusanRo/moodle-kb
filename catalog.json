@@ -1,0 +1,312 @@
+{
+  "generated": "2026-10-29",
+  "timezone_note": "Europe/Bucharest",
+  "moodle_branch_verified": "main (5.x)",
+  "docs": [
+    "README.md",
+    "docs/01-architecture.md",
+    "docs/02-webservice.md",
+    "docs/03-quiz.md",
+    "docs/04-student.md",
+    "docs/05-integration.md",
+    "docs/06-gaps.md"
+  ],
+  "stock_ws_cannot": [
+    "create questions in question bank",
+    "import GIFT/Moodle XML via WS",
+    "create fully configured quiz with specific questions",
+    "schedule publish without existing quiz instance fields set by plugin/UI"
+  ],
+  "recommended_architecture": "local_lspilot Moodle plugin + cloud LSPilot; MVP = GIFT/XML download; later LTI 1.3",
+  "exam_mode_urls_off": [
+    "/mod/quiz/attempt.php",
+    "/mod/quiz/summary.php",
+    "/mod/quiz/processattempt.php",
+    "/mod/quiz/startattempt.php"
+  ],
+  "exam_mode_urls_learn": [
+    "/mod/quiz/review.php"
+  ],
+  "relevant_functions": {
+    "core_webservice_get_site_info": {
+      "description": "Return some site info / user info / list web service functions",
+      "type": "read",
+      "capabilities": null,
+      "source": "https://github.com/moodle/moodle/blob/main/lib/db/services.php"
+    },
+    "core_course_get_contents": {
+      "description": "Get course contents",
+      "type": "read",
+      "capabilities": "moodle/course:update, moodle/course:viewhiddencourses",
+      "source": "https://github.com/moodle/moodle/blob/main/lib/db/services.php"
+    },
+    "core_course_get_courses": {
+      "description": "Return course details",
+      "type": "read",
+      "capabilities": "moodle/course:view, moodle/course:update, moodle/course:viewhiddencourses",
+      "source": "https://github.com/moodle/moodle/blob/main/lib/db/services.php"
+    },
+    "core_course_get_courses_by_field": {
+      "description": "Get courses matching a specific field (id/s, shortname, idnumber, category)",
+      "type": "read",
+      "capabilities": null,
+      "source": "https://github.com/moodle/moodle/blob/main/lib/db/services.php"
+    },
+    "core_course_edit_module": {
+      "description": "** DEPRECATED ** Please do not call this function any more (will be removed in Moodle 6.0).",
+      "type": "write",
+      "capabilities": null,
+      "source": "https://github.com/moodle/moodle/blob/main/lib/db/services.php"
+    },
+    "core_course_delete_modules": {
+      "description": "Deletes all specified module instances",
+      "type": "write",
+      "capabilities": "moodle/course:manageactivities",
+      "source": "https://github.com/moodle/moodle/blob/main/lib/db/services.php"
+    },
+    "core_enrol_get_users_courses": {
+      "description": "Get the list of courses where a user is enrolled in",
+      "type": "read",
+      "capabilities": "moodle/course:viewparticipants",
+      "source": "https://github.com/moodle/moodle/blob/main/lib/db/services.php"
+    },
+    "core_enrol_get_enrolled_users": {
+      "description": "Get enrolled users by course id.",
+      "type": "read",
+      "capabilities": "moodle/user:viewdetails, moodle/user:viewhiddendetails, moodle/course:useremail, moodle/user:update, ",
+      "source": "https://github.com/moodle/moodle/blob/main/lib/db/services.php"
+    },
+    "core_files_upload": {
+      "description": "upload a file to moodle",
+      "type": "write",
+      "capabilities": null,
+      "source": "https://github.com/moodle/moodle/blob/main/lib/db/services.php"
+    },
+    "core_completion_get_activities_completion_status": {
+      "description": "Return the activities completion status for a user in a course.",
+      "type": "read",
+      "capabilities": null,
+      "source": "https://github.com/moodle/moodle/blob/main/lib/db/services.php"
+    },
+    "core_completion_get_course_completion_status": {
+      "description": "Returns course completion status.",
+      "type": "read",
+      "capabilities": "report/completion:view",
+      "source": "https://github.com/moodle/moodle/blob/main/lib/db/services.php"
+    },
+    "core_calendar_get_calendar_upcoming_view": {
+      "description": "Fetch the upcoming view data for a calendar",
+      "type": "read",
+      "capabilities": "",
+      "source": "https://github.com/moodle/moodle/blob/main/lib/db/services.php"
+    },
+    "core_calendar_get_action_events_by_courses": {
+      "description": "Get calendar action events by courses",
+      "type": "read",
+      "capabilities": "moodle/calendar:manageentries, moodle/calendar:manageownentries, moodle/calendar:managegroupentries",
+      "source": "https://github.com/moodle/moodle/blob/main/lib/db/services.php"
+    },
+    "gradereport_user_get_grade_items": {
+      "description": "Returns the complete list of grade items for users in a course",
+      "type": "read",
+      "capabilities": "gradereport/user:view",
+      "source": "https://github.com/moodle/moodle/blob/main/grade/report/user/db/services.php"
+    },
+    "gradereport_user_get_grades_table": {
+      "description": "Get the user/s report grades table for a course",
+      "type": "read",
+      "capabilities": "gradereport/user:view",
+      "source": "https://github.com/moodle/moodle/blob/main/grade/report/user/db/services.php"
+    },
+    "gradereport_overview_get_course_grades": {
+      "description": "Get the given user courses final grades",
+      "type": "read",
+      "capabilities": null,
+      "source": "https://github.com/moodle/moodle/blob/main/grade/report/overview/db/services.php"
+    },
+    "core_grades_get_gradeitems": {
+      "description": "Get the gradeitems for a course",
+      "type": "read",
+      "capabilities": null,
+      "source": "https://github.com/moodle/moodle/blob/main/lib/db/services.php"
+    },
+    "core_grades_update_grades": {
+      "description": "Update a grade item and associated student grades.",
+      "type": "write",
+      "capabilities": null,
+      "source": "https://github.com/moodle/moodle/blob/main/lib/db/services.php"
+    },
+    "core_question_update_flag": {
+      "description": "Update the flag state of a question attempt.",
+      "type": "write",
+      "capabilities": "moodle/question:flag",
+      "source": "https://github.com/moodle/moodle/blob/main/lib/db/services.php"
+    },
+    "core_question_get_random_question_summaries": {
+      "description": "Get the random question set for a criteria",
+      "type": "read",
+      "capabilities": null,
+      "source": "https://github.com/moodle/moodle/blob/main/lib/db/services.php"
+    },
+    "core_question_move_questions": {
+      "description": "Bulk move questions to a new category.",
+      "type": "write",
+      "capabilities": null,
+      "source": "https://github.com/moodle/moodle/blob/main/lib/db/services.php"
+    },
+    "core_question_search_shared_banks": {
+      "description": "Get a list of shared question banks filtered by a search term.",
+      "type": "read",
+      "capabilities": null,
+      "source": "https://github.com/moodle/moodle/blob/main/lib/db/services.php"
+    },
+    "mod_quiz_get_quizzes_by_courses": {
+      "description": "Returns a list of quizzes in a provided list of courses,\n                            if no list is provided all quizzes that the user can view will be returned.",
+      "type": "read",
+      "capabilities": "mod/quiz:view",
+      "source": "https://github.com/moodle/moodle/blob/main/mod/quiz/db/services.php"
+    },
+    "mod_quiz_get_quiz_access_information": {
+      "description": "Return access information for a given quiz.",
+      "type": "read",
+      "capabilities": "mod/quiz:view",
+      "source": "https://github.com/moodle/moodle/blob/main/mod/quiz/db/services.php"
+    },
+    "mod_quiz_get_user_attempts": {
+      "description": "Return a list of attempts for the given quiz and user. ",
+      "type": "read",
+      "capabilities": "mod/quiz:view",
+      "source": "https://github.com/moodle/moodle/blob/main/mod/quiz/db/services.php"
+    },
+    "mod_quiz_get_attempt_access_information": {
+      "description": "Return access information for a given attempt in a quiz.",
+      "type": "read",
+      "capabilities": "mod/quiz:view",
+      "source": "https://github.com/moodle/moodle/blob/main/mod/quiz/db/services.php"
+    },
+    "mod_quiz_get_attempt_data": {
+      "description": "Returns information for the given attempt page for a quiz attempt in progress.",
+      "type": "read",
+      "capabilities": "mod/quiz:attempt",
+      "source": "https://github.com/moodle/moodle/blob/main/mod/quiz/db/services.php"
+    },
+    "mod_quiz_get_attempt_summary": {
+      "description": "Returns a summary of a quiz attempt before it is submitted.",
+      "type": "read",
+      "capabilities": "mod/quiz:attempt",
+      "source": "https://github.com/moodle/moodle/blob/main/mod/quiz/db/services.php"
+    },
+    "mod_quiz_get_attempt_review": {
+      "description": "Returns review information for the given finished attempt, can be used by users or teachers.",
+      "type": "read",
+      "capabilities": "mod/quiz:reviewmyattempts",
+      "source": "https://github.com/moodle/moodle/blob/main/mod/quiz/db/services.php"
+    },
+    "mod_quiz_get_combined_review_options": {
+      "description": "Combines the review options from a number of different quiz attempts.",
+      "type": "read",
+      "capabilities": "mod/quiz:view",
+      "source": "https://github.com/moodle/moodle/blob/main/mod/quiz/db/services.php"
+    },
+    "mod_quiz_start_attempt": {
+      "description": "Starts a new attempt at a quiz.",
+      "type": "write",
+      "capabilities": "mod/quiz:attempt",
+      "source": "https://github.com/moodle/moodle/blob/main/mod/quiz/db/services.php"
+    },
+    "mod_quiz_save_attempt": {
+      "description": "Processes save requests during the quiz.\n                            This function is intended for the quiz auto-save feature.",
+      "type": "write",
+      "capabilities": "mod/quiz:attempt",
+      "source": "https://github.com/moodle/moodle/blob/main/mod/quiz/db/services.php"
+    },
+    "mod_quiz_process_attempt": {
+      "description": "Process responses during an attempt at a quiz and also deals with attempts finishing.",
+      "type": "write",
+      "capabilities": "mod/quiz:attempt",
+      "source": "https://github.com/moodle/moodle/blob/main/mod/quiz/db/services.php"
+    },
+    "mod_quiz_add_random_questions": {
+      "description": "Add a number of random questions to a quiz.",
+      "type": "write",
+      "capabilities": "mod/quiz:manage",
+      "source": "https://github.com/moodle/moodle/blob/main/mod/quiz/db/services.php"
+    },
+    "mod_quiz_update_slots": {
+      "description": "Update the properties of slots in a quiz. All slots must belong to the same quiz.",
+      "type": "write",
+      "capabilities": "mod/quiz:manage",
+      "source": "https://github.com/moodle/moodle/blob/main/mod/quiz/db/services.php"
+    },
+    "mod_quiz_get_overrides": {
+      "description": "Get quiz overrides",
+      "type": "read",
+      "capabilities": "mod/quiz:manageoverrides",
+      "source": "https://github.com/moodle/moodle/blob/main/mod/quiz/db/services.php"
+    },
+    "mod_quiz_save_overrides": {
+      "description": "Update or insert quiz overrides",
+      "type": "write",
+      "capabilities": "mod/quiz:manageoverrides",
+      "source": "https://github.com/moodle/moodle/blob/main/mod/quiz/db/services.php"
+    },
+    "mod_assign_get_assignments": {
+      "description": "Returns the courses and assignments for the users capability",
+      "type": "read",
+      "capabilities": null,
+      "source": "https://github.com/moodle/moodle/blob/main/mod/assign/db/services.php"
+    },
+    "mod_assign_get_submission_status": {
+      "description": "Returns information about an assignment submission status for a given user.",
+      "type": "read",
+      "capabilities": "mod/assign:view",
+      "source": "https://github.com/moodle/moodle/blob/main/mod/assign/db/services.php"
+    },
+    "mod_assign_save_submission": {
+      "description": "Update the current students submission",
+      "type": "write",
+      "capabilities": null,
+      "source": "https://github.com/moodle/moodle/blob/main/mod/assign/db/services.php"
+    },
+    "mod_assign_submit_for_grading": {
+      "description": "Submit the current students assignment for grading",
+      "type": "write",
+      "capabilities": null,
+      "source": "https://github.com/moodle/moodle/blob/main/mod/assign/db/services.php"
+    },
+    "mod_lesson_get_lessons_by_courses": {
+      "description": "Returns a list of lessons in a provided list of courses,\n                            if no list is provided all lessons that the user can view will be returned.",
+      "type": "read",
+      "capabilities": "mod/lesson:view",
+      "source": "https://github.com/moodle/moodle/blob/main/mod/lesson/db/services.php"
+    },
+    "mod_lesson_get_lesson_access_information": {
+      "description": "Return access information for a given lesson.",
+      "type": "read",
+      "capabilities": "mod/lesson:view",
+      "source": "https://github.com/moodle/moodle/blob/main/mod/lesson/db/services.php"
+    },
+    "mod_h5pactivity_get_h5pactivities_by_courses": {
+      "description": "Returns a list of h5p activities in a list of\n            provided courses, if no list is provided all h5p activities\n            that the user can view will be returned.",
+      "type": "read",
+      "capabilities": "mod/h5pactivity:view",
+      "source": "https://github.com/moodle/moodle/blob/main/mod/h5pactivity/db/services.php"
+    },
+    "mod_h5pactivity_get_user_attempts": {
+      "description": "Return the information needed to list all enrolled user attempts.",
+      "type": "read",
+      "capabilities": "mod/h5pactivity:reviewattempts",
+      "source": "https://github.com/moodle/moodle/blob/main/mod/h5pactivity/db/services.php"
+    }
+  },
+  "sources": {
+    "web_services": "https://docs.moodle.org/en/Using_web_services",
+    "gift": "https://docs.moodle.org/en/GIFT_format",
+    "moodle_xml": "https://docs.moodle.org/en/Moodle_XML_format",
+    "quiz_settings": "https://docs.moodle.org/en/Quiz_settings",
+    "lti": "https://docs.moodle.org/en/LTI_External_tool",
+    "privacy": "https://moodledev.io/docs/apis/subsystems/privacy",
+    "lib_services": "https://github.com/moodle/moodle/blob/main/lib/db/services.php",
+    "quiz_services": "https://github.com/moodle/moodle/blob/main/mod/quiz/db/services.php"
+  }
+}
