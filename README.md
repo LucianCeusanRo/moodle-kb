@@ -6,6 +6,7 @@
 
 **What Moodle 4.x/5.x can and cannot do through its API — researched, verified, searchable.**
 
+  <a href="https://github.com/LucianCeusanRo/moodle-kb/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/LucianCeusanRo/moodle-kb/actions/workflows/ci.yml/badge.svg"></a>
   <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-green.svg"></a>
   <img alt="Markdown + Python" src="https://img.shields.io/badge/language-Markdown%20%2B%20Python-blue">
   <a href="https://github.com/LucianCeusanRo/moodle-kb/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/LucianCeusanRo/moodle-kb?style=flat"></a>
