@@ -6,6 +6,7 @@
 
 **What Moodle 4.x/5.x can and cannot do through its API — researched, verified, searchable.**
 
+  <a href="https://moodle-kb-demo.vercel.app"><img alt="Live demo" src="https://img.shields.io/badge/Live%20demo-open-0ea5e9"></a>
   <a href="https://github.com/LucianCeusanRo/moodle-kb/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/LucianCeusanRo/moodle-kb/actions/workflows/ci.yml/badge.svg"></a>
   <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-green.svg"></a>
   <img alt="Markdown + Python" src="https://img.shields.io/badge/language-Markdown%20%2B%20Python-blue">
@@ -17,6 +18,8 @@
 </div>
 
 <p align="center"><img src="docs/screenshots/ws-lookup.webp" alt="moodle-kb screenshot" width="900"></p>
+
+<p align="center"><strong><a href="https://moodle-kb-demo.vercel.app">▶ Live demo</a></strong> — open it in the browser and try it yourself.</p>
 
 ## 📑 Table of contents
 
