@@ -38,6 +38,13 @@ Sources:
 
 **Security:** Prefer school-issued tokens (not password login). Rotate tokens. Never embed tokens in the student Chrome extension — teacher flows use server-side LSPilot backend that holds the token encrypted per-tenant.
 
+## Before you plan an integration: check token capabilities
+
+- What a web-service call returns depends on the capabilities assigned to the role behind the service token, and on which functions have been added to the external service. A function that exists in Moodle can still fail or come back empty if either of those is missing.
+- Check these early, before you design a report or integration. In current Moodle 4.x/5.x the path is Site administration → Server → Web services → External services (functions on the service), plus the capabilities on the token user's role. Moodle lists required capabilities when you add a function to a service.
+- One report screen in Moodle can need several web-service calls joined together.
+- Some things that look like one call are not a single core function. Quiz-related data, for example, is split across several functions in the catalog below (list quizzes, access information, attempts, review, and so on).
+
 ## Catalog of relevant functions (verified present)
 
 ### Core / site
